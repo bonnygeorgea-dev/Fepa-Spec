@@ -1,12 +1,14 @@
 /* FEPA Standards — service worker (offline app shell) */
-const CACHE = 'fepa-v1.9';
+const CACHE = 'fepa-v2.0';
 const ASSETS = [
   './',
   './index.html',
   './manifest.json',
   './icon-192.png',
   './icon-512.png',
-  './icon-maskable-512.png'
+  './icon-maskable-512.png',
+  './screenshot-mobile.png',
+  './screenshot-wide.png'
 ];
 
 self.addEventListener('install', e => {

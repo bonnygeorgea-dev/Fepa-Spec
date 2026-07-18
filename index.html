@@ -146,7 +146,7 @@
 
 <script>
 /* ========= FEPA Standards Reference — MGP Koratty ========= */
-const APP_VERSION = "v1.9";
+const APP_VERSION = "v2.0";
 const LAST_UPDATED = "16 Jul 2026";
 document.getElementById('ver').textContent = APP_VERSION;
 
@@ -421,6 +421,15 @@ function switchTab(tab, btn){
   document.getElementById('subhead').textContent = HEADS[tab];
   window.scrollTo({top:0,behavior:'smooth'});
 }
+
+/* Open a specific tab from ?tab=  (used by manifest shortcuts) */
+(function(){
+  const t = new URLSearchParams(location.search).get('tab');
+  if(t && ['fm','pm','fu','pu','ju'].includes(t)){
+    const btn = document.querySelector('nav button[data-tab="'+t+'"]');
+    if(btn) switchTab(t, btn);
+  }
+})();
 
 /* PWA: register service worker (works when served over http/https, e.g. GitHub Pages) */
 if ('serviceWorker' in navigator) {
